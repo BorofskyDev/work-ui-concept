@@ -1,13 +1,19 @@
 import React from 'react'
 import { Navbar, Nav } from 'react-bootstrap'
-import { Link } from 'react-router-dom'
+import { NavLink } from 'react-router-dom'
+
 
 export default function NavbarComponent() {
     return (
-        <Navbar bg="light" expanded="sm">
-            <Navbar.Brand as={Link}>
+        <Navbar bg="light" expand="s" >
+            <Navbar.Brand as={NavLink} to="/">
                 Asimov Travel Dashboard
             </Navbar.Brand>
+            <Nav>
+                <Nav.Link as={NavLink} to="/user">
+                    Profile
+                </Nav.Link>
+            </Nav>
             
         </Navbar>
     )

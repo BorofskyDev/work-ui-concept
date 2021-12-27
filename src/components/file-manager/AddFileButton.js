@@ -61,7 +61,7 @@ export default function AddFileButton({ currentFolder }) {
             return uploadFile.id !== id;
           });
         });
-
+// Make sure to change the rules in your database (Firebase) as well
         uploadTask.snapshot.ref.getDownloadURL().then((url) => {
           database.files
             .where("name", "==", file.name)

@@ -34,7 +34,7 @@ export default function Profile() {
                 <Button onClick={handleLogout}>Log Out</Button>
             </div>
             <div className="w-100 text-center mt-2">
-                Actually, I'm good. <NavLink to="/dashboard">Take me back to the Dashboard</NavLink>
+                Actually, I'm good. <NavLink to="/">Take me back to the Dashboard</NavLink>
 
             </div>
         </CenteredContainer>

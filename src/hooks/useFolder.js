@@ -1,12 +1,15 @@
 import { useEffect, useReducer } from "react";
+import { useAuth } from "../components/contexts/AuthContext";
 import { database } from "../firebase";
 
 const ACTIONS = {
   SELECT_FOLDER: "select-folder",
   UPDATE_FOLDER: "update-folder",
+  SET_CHILD_FOLDERS: "set-child-folders",
+  SET_CHILD_FILES: "set-child-files",
 };
 
-const ROOT_FOLDER = { name: "Root", id: null, path: [] };
+export const ROOT_FOLDER = { name: "Root", id: null, path: [] };
 
 //  Selection of new folder (how do I want to style this?)
 function reducer(state, { type, payload }) {
@@ -18,13 +21,26 @@ function reducer(state, { type, payload }) {
         childFiles: [],
         childFolders: [],
       };
+
     case ACTIONS.UPDATE_FOLDER:
       return {
         ...state,
         folder: payload.folder,
       };
-    default:
-      return state;
+    case ACTIONS.SET_CHILD_FOLDERS:
+      return {
+        ...state,
+        childFolders: payload.childFolders,
+      };
+    
+    
+      case ACTIONS.SET_CHILD_FILES:
+          return {
+              ...state,
+              childFiles: payload.childFiles,
+          };
+      default:
+          return state
   }
 }
 
@@ -35,6 +51,7 @@ export function useFolder(folderId = null, folder = null) {
     childFolders: [],
     childFiles: [],
   });
+  const { currentUser } = useAuth();
 
   useEffect(() => {
     dispatch({ type: ACTIONS.SELECT_FOLDER, payload: { folderId, folder } });
@@ -64,6 +81,34 @@ export function useFolder(folderId = null, folder = null) {
         });
       });
   }, [folderId]);
+
+  useEffect(() => {
+    return database.folders
+      .where("parentId", "==", folderId)
+      .where("userId", "==", currentUser.uid)
+      .orderBy("createdAt")
+      .onSnapshot((snapshot) => {
+        dispatch({
+          type: ACTIONS.SET_CHILD_FOLDERS,
+          payload: { childFolders: snapshot.docs.map(database.formatDoc) },
+        });
+      });
+  }, [folderId, currentUser]);
+
+  useEffect(() => {
+    return (
+      database.files
+        .where("folderId", "==", folderId)
+        .where("userId", "==", currentUser.uid)
+        // .orderBy("createdAt")
+        .onSnapshot((snapshot) => {
+          dispatch({
+            type: ACTIONS.SET_CHILD_FILES,
+            payload: { childFiles: snapshot.docs.map(database.formatDoc) },
+          });
+        })
+    );
+  }, [folderId, currentUser]);
 
   return state;
 }

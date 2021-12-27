@@ -27,10 +27,13 @@ function App() {
                 </PrivateRoute>}/>
               <Route path="/update-profile" element={<PrivateRoute>
                 <UpdateProfile/>
-              </PrivateRoute>} />'
+              </PrivateRoute>} />
 
               {/* File Management */}
               <Route exact path="/" element={<PrivateRoute>
+                <Dashboard/>
+              </PrivateRoute>} />
+              <Route exact path="/folder/:folderId" element={<PrivateRoute>
                 <Dashboard/>
               </PrivateRoute>} />
             </Routes>

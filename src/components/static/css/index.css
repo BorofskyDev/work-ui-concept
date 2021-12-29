@@ -1,0 +1,20 @@
+@font-face {
+    font-family: "AileronsRegular";
+    src: local("AileronsRegular"),
+        url("../../../fonts/Ailerons-Regular.otf") format("truetype");
+    font-weight: bold;
+
+}
+
+@font-face {
+    font-family: "PROMETHEUS";
+    src: local("PROMETHEUS"),
+        url("../../../fonts/PROMETHEUS.ttf") format("truetype");
+    font-weight: bold;
+}
+
+* {
+    font-family: "AileronsRegular"
+}
+
+

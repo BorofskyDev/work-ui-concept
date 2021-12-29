@@ -1,0 +1,57 @@
+$shadow: 0.3rem 0.3rem 0.3rem;
+
+.navbar {
+  /* background-color: black; */
+  background-color: black;
+  padding-left: 1em;
+  padding-right: 1em;
+  position: absolute;
+}
+
+.font-face-ae {
+  font-family: "AileronsRegular";
+  color: #0bd9e0;
+}
+
+.profile-btn {
+  font-family: "AileronsRegular";
+  background-color: black;
+  width: 10rem;
+  height: 2rem;
+  border-radius: 1rem;
+  box-shadow: $shadow;
+  justify-self: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: 0.3s ease;
+  grid-column: 1 / 2;
+  grid-row: 5 / 6;
+  color: #0bd9e0;
+}
+
+.font-face-ae:hover {
+  font-size: 1.4rem;
+  color: #0bd9e0;
+  -webkit0animation: glow 1s ease-in-out infinite alternate;
+  -moz-animation: glow 1s ease-in-out infinite alternate;
+  animation: glow 1s ease-in-out infinite alternate;
+}
+
+.profile-btn:hover {
+  color: #5f01f7;
+  -webkit0animation: glow 1s ease-in-out infinite alternate;
+  -moz-animation: glow 1s ease-in-out infinite alternate;
+  animation: glow 1s ease-in-out infinite alternate;
+}
+
+@keyframes glow {
+  from {
+    text-shadow: 0 0 10px rgb(255, 255, 255), 0 0 20px #fff, 0 0 30px;
+  }
+
+  to {
+    text-shadow: 0 0 20px #fff, 0 0 30px #5f01f7, 0 0 40px #5f01f7;
+  }
+}

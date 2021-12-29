@@ -3,6 +3,7 @@ import { NavLink } from 'react-router-dom'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faFolder } from '@fortawesome/free-solid-svg-icons'
 import { Button } from 'react-bootstrap'
+import '../static/css/file-management/File.scss'
 
 export default function Folder({ folder }) {
     return (
@@ -17,7 +18,7 @@ export default function Folder({ folder }) {
             className="text-truncate w-100"
             as={NavLink}
             >
-            <FontAwesomeIcon icon={faFolder} className="mr-2" />{folder.name}
+            <FontAwesomeIcon icon={faFolder} className="upload_icon" />{folder.name}
             </Button>
     )
 }

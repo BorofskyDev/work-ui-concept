@@ -5,6 +5,7 @@ import { faFolderPlus } from "@fortawesome/free-solid-svg-icons";
 import { database } from "../../firebase"
 import { useAuth } from "../contexts/AuthContext";
 import { ROOT_FOLDER } from "../../hooks/useFolder";
+import '../static/css/file-management/File.scss'
 
 export default function AddFolderButton({currentFolder}) {
   const [open, setOpen] = useState(false);
@@ -43,9 +44,9 @@ export default function AddFolderButton({currentFolder}) {
 
   return (
     <>
-      <Button onClick={openModal} variant="outline-success" size="sm">
+      <label className="upload_icon folder" onClick={openModal} >
         <FontAwesomeIcon icon={faFolderPlus} />
-      </Button>
+      </label>
       <Modal show={open} onHide={closeModal}>
         <Form onSubmit={handleSubmit}>
           <Modal.Body>

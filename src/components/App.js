@@ -10,6 +10,7 @@ import Profile from "./user/Profile";
 import Dashboard from "./file-manager/Dashboard";
 
 
+
 function App() {
   return (
     
@@ -38,6 +39,7 @@ function App() {
               </PrivateRoute>} />
             </Routes>
           </AuthProvider>
+          
         </Router>
         
       

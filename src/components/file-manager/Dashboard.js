@@ -1,6 +1,7 @@
 import React from "react";
 import { Container } from "react-bootstrap";
 import { useFolder } from "../../hooks/useFolder";
+import { deleteDoc } from "firebase/compat/firestore"
 import AddFolderButton from "./AddFolderButton";
 import Folder from "./Folder";
 import Navbar from "./Navbar";
@@ -16,6 +17,7 @@ export default function Dashboard() {
     const { state = {} } = useLocation();
     const { folder, childFolders, childFiles} = useFolder(folderId, );
 
+    
 
   return (
     <body>
@@ -45,13 +47,14 @@ export default function Dashboard() {
                     <div className="d-flex flex-wrap">
                         {childFiles.map(childFile => (
                             <div
-                                key={childFile.id}
-                                style={{ maxWidth: "250px" }}
-                                className="p-2"
+                            key={childFile.id}
+                            style={{ maxWidth: "250px" }}
+                            className="p-2"
                             >
                                 <File file={childFile} />
                             </div>
                         ))}
+                        <button>x</button>
                     </div>
                 )}
             </Container>

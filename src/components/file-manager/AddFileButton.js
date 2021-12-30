@@ -11,6 +11,7 @@ import { Toast, ProgressBar } from "react-bootstrap";
 export default function AddFileButton({ currentFolder }) {
   const [uploadingFiles, setUploadingFiles] = useState([]);
   const { currentUser } = useAuth();
+  
 
   function handleUpload(e) {
     const file = e.target.files[0];
